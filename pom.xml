@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>staccato-example</groupId>
+  <artifactId>staccato-example</artifactId>
+  <version>2.0</version>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.readytalk</groupId>
+      <artifactId>staccato</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.5.6</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+
+    <resources>
+      <resource>
+        <directory>src/main/database</directory>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+
+    <plugins>
+
+      <plugin>
+        <groupId>com.readytalk</groupId>
+        <artifactId>staccato-maven-plugin</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <configuration>
+
+          <!-- the name of your database-->
+          <dbName>staccato_example</dbName>
+
+          <!-- the jdbc url -->
+          <jdbcUrl>jdbc:postgresql://localhost:5432/</jdbcUrl>
+
+          <!-- db username and password -->
+          <dbUsername>staccato</dbUsername>
+          <dbPassword>staccato</dbPassword>
+
+          <!-- the location in your project where you store your migration scripts -->
+          <migrationsDir>${basedir}/src/main/database/migrations</migrationsDir>
+        </configuration>
+        <executions>
+          <!--
+          create-database:
+          Executes an UP migration beginning from your earliest
+          script and finishing with your latest script.
+
+          This is equivalent to executing the migration' goal with the migration
+          type set to UP
+          -->
+          <execution>
+            <id>create-database</id>
+            <phase/>
+            <goals>
+              <goal>create-database</goal>
+            </goals>
+          </execution>
+          <!--
+          migration:
+          Executes a migration.  You specify the type and optional
+          from/to dates or migrate script
+          -->
+          <execution>
+            <id>migration</id>
+            <phase/>
+            <goals>
+              <goal>migration</goal>
+            </goals>
+          </execution>
+          <!--
+          create-script:
+          Creates a new migration script from the GroovyScriptTemplate in the staccato jar.
+
+          The script gets created in the 'migrationDir' directory
+          -->
+          <execution>
+            <id>create-script</id>
+            <phase/>
+            <goals>
+              <goal>create-script</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <!--
+          The staccato maven plugin is dependent on this project jar because it loads the scripts via the classpath.
+          Accordingly, make sure you install the project jar to the local repository prior to executing the following
+          goals:
+            - migration
+            - create-database
+            -->
+          <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${artifactId}</artifactId>
+            <version>${version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
