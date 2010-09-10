@@ -6,7 +6,7 @@
 
   <groupId>staccato-example</groupId>
   <artifactId>staccato-example</artifactId>
-  <version>2.0</version>
+  <version>1.0</version>
 
   <dependencies>
     <dependency>
@@ -57,6 +57,10 @@
           <!-- db username and password -->
           <dbUsername>staccato</dbUsername>
           <dbPassword>staccato</dbPassword>
+
+          <!-- the name of the root db and username; used when running a CREATE migration -->
+          <rootDbName>postgres</rootDbName>
+          <rootDbUsername>postgres</rootDbUsername>
 
           <!-- the location in your project where you store your migration scripts -->
           <migrationsDir>${basedir}/src/main/database/migrations</migrationsDir>
