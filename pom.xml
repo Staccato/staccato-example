@@ -51,16 +51,12 @@
           <!-- the name of your database-->
           <dbName>staccato_example</dbName>
 
+          <!-- db username and password -->
+          <dbUser>staccato</dbUser>
+          <dbPwd>staccato</dbPwd>
+
           <!-- the jdbc url -->
           <jdbcUrl>jdbc:postgresql://localhost:5432/</jdbcUrl>
-
-          <!-- db username and password -->
-          <dbUsername>staccato</dbUsername>
-          <dbPassword>staccato</dbPassword>
-
-          <!-- the name of the root db and username; used when running a CREATE migration -->
-          <rootDbName>postgres</rootDbName>
-          <rootDbUsername>postgres</rootDbUsername>
 
           <!-- the location in your project where you store your migration scripts -->
           <migrationsDir>${basedir}/src/main/database/migrations</migrationsDir>

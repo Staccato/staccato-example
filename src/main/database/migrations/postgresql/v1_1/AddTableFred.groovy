@@ -39,7 +39,7 @@ import com.readytalk.staccato.database.DatabaseType
  */
 @Migration(
 scriptDate = "2010-09-05T10:37:12-06:00",
-databaseVersion = "1.01",
+databaseVersion = "1.1",
 scriptVersion = "1.0.0",
 databaseType = DatabaseType.POSTGRESQL)
 class AddTableFred {
