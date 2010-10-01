@@ -1,4 +1,4 @@
-package migrations
+package migrations.postgresql
 
 import com.readytalk.staccato.database.migration.MigrationRuntime
 import com.readytalk.staccato.database.migration.annotation.Migration
@@ -44,11 +44,17 @@ class Base {
 
   @SchemaUp
   schemaUp(MigrationRuntime runtime) {
+    /*
+    This is an example of delegating to a sql file to run the schema migration.
+     */
     runtime.executeSQLFile "postgres-base-schema.sql";
   }
 
   @DataUp
   seedDb(MigrationRuntime runtime) {
+    /*
+    This is an example of delegating to a sql file to seed data
+     */
     runtime.executeSQLFile "base-seed.sql"
   }
 }

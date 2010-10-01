@@ -1,12 +1,8 @@
-package migrations.postgresql.v1_1
+package migrations.postgresql.v2_0
 
 import com.readytalk.staccato.database.migration.MigrationRuntime
 import com.readytalk.staccato.database.migration.annotation.Migration
 import com.readytalk.staccato.database.migration.annotation.SchemaUp
-import com.readytalk.staccato.database.migration.annotation.DataUp
-import java.sql.ResultSet
-import com.readytalk.staccato.database.migration.annotation.PostUp
-import com.readytalk.staccato.database.DatabaseType
 
 /**
  * Represents a groovy migration script.
@@ -38,32 +34,26 @@ import com.readytalk.staccato.database.DatabaseType
  * @author jhumphrey
  */
 @Migration(
-scriptDate = "2010-09-05T10:37:12-06:00",
-databaseVersion = "1.1",
-scriptVersion = "1.0.0",
-databaseType = DatabaseType.POSTGRESQL)
-class AddTableFred {
+scriptDate = "2010-10-01T08:56:40-06:00",
+databaseVersion = "2.0",
+scriptVersion = "1.0.0")
+class AddTableWaldo {
 
   @SchemaUp
   schemaUp(MigrationRuntime runtime) {
-    /*
-    This is an example of delegating to a sql file to run the schema migration.
+
+    /**
+     * This example creates table waldo using SQL contained in a String rather than delegating to a sql file
      */
-    runtime.executeSQLFile "add-table-fred.sql"
-  }
 
-  @DataUp
-  moveFromTableBar(MigrationRuntime runtime) {
-    ResultSet rs = runtime.executeSQL("select bar from foo");
-    while (rs.next()) {
-      String fieldToMigrate = rs.getString(1)  // get the bar field value
-      fieldToMigrate = fieldToMigrate.replace("bar", "baz")  // do data transformation on it; change 'bar' to 'baz'
-      runtime.executeSQL("insert into fred(baz) values('${fieldToMigrate}');")  // insert the the new baz field into fred
-    }
-  }
+    runtime.executeSQL """
 
-  @PostUp
-  dropBar(MigrationRuntime runtime) {
-    runtime.executeSQL("alter table foo drop column bar");
+      create table waldo (
+        id serial,
+        baz varchar(50) not null,
+        primary key (id)
+      );
+
+    """;
   }
 }

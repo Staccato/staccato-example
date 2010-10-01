@@ -1,4 +1,4 @@
-package migrations
+package migrations.postgresql
 
 import com.readytalk.staccato.database.DatabaseContext
 import com.readytalk.staccato.database.migration.MigrationRuntime
@@ -39,7 +39,7 @@ import com.readytalk.staccato.database.DatabaseType
  */
 @Migration(
 scriptDate = "2010-09-04T08:00:40-06:00",
-databaseVersion = "1.0",
+databaseVersion = "0.0",
 scriptVersion = "1.0.0",
 databaseType = DatabaseType.POSTGRESQL)
 class CreateDatabase {
