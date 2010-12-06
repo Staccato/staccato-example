@@ -60,7 +60,7 @@
 
       <plugin>
         <groupId>com.readytalk</groupId>
-        <artifactId>staccato-maven-plugin</artifactId>
+        <artifactId>maven-staccato-plugin</artifactId>
         <version>1.0.1-SNAPSHOT</version>
         <configuration>
 
