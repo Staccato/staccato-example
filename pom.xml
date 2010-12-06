@@ -6,7 +6,7 @@
 
   <groupId>staccato-example</groupId>
   <artifactId>staccato-example</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
 
   <repositories>
     <repository>
@@ -28,7 +28,7 @@
     <dependency>
       <groupId>com.readytalk</groupId>
       <artifactId>staccato</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.0.1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -61,7 +61,7 @@
       <plugin>
         <groupId>com.readytalk</groupId>
         <artifactId>staccato-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
         <configuration>
 
           <!-- the name of your database-->
@@ -93,31 +93,7 @@
               <goal>create-database</goal>
             </goals>
           </execution>
-          <!--
-          migration:
-          Executes a migration.  You specify the type and optional
-          from/to dates or migrate script
-          -->
-          <execution>
-            <id>migration</id>
-            <phase/>
-            <goals>
-              <goal>migration</goal>
-            </goals>
-          </execution>
-          <!--
-          create-script:
-          Creates a new migration script from the GroovyScriptTemplate in the staccato jar.
 
-          The script gets created in the 'migrationDir' directory
-          -->
-          <execution>
-            <id>create-script</id>
-            <phase/>
-            <goals>
-              <goal>create-script</goal>
-            </goals>
-          </execution>
         </executions>
         <dependencies>
           <!--
