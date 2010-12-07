@@ -6,7 +6,7 @@
 
   <groupId>staccato-example</groupId>
   <artifactId>staccato-example</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.0</version>
 
   <repositories>
     <repository>
@@ -28,7 +28,7 @@
     <dependency>
       <groupId>com.readytalk</groupId>
       <artifactId>staccato</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -60,7 +60,7 @@
 
       <plugin>
         <groupId>com.readytalk</groupId>
-        <artifactId>staccato-plugin</artifactId>
+        <artifactId>staccato-maven-plugin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <configuration>
 
